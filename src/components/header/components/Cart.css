@@ -1,0 +1,25 @@
+.cart-container {
+    display: flex;
+    width: 36px;
+    height: 32px;
+    position: relative;
+    align-items: center;
+}
+
+.cart-icon {
+    height: 28px;
+}
+
+.cart-number {
+    background-color: #F7C8E0;
+    height: 16px;
+    width: 16px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
