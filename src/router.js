@@ -1,5 +1,5 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import ProductDetail from "./screens/product-detail/ProductDetail";
 import ProductList from "./screens/product-list/ProductList";
 
