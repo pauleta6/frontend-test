@@ -1,11 +1,13 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import ProductDetail from "./src/screens/product-detail/product-detail";
-import ProductList from "./src/screens/product-list/product-list";
+import Header from "./components/Header";
+import ProductDetail from "./screens/product-detail/ProductDetail";
+import ProductList from "./screens/product-list/ProductList";
 
 const router = createBrowserRouter([
   {
     element: (
       <>
+        <Header></Header>
         <Outlet />
       </>
     ),
