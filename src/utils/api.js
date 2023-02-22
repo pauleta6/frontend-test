@@ -1,4 +1,4 @@
-const API_URL = "https://front-test-api.herokuapp.com/api";
+const API_URL = "https://itx-frontend-test.onrender.com/api";
 
 const errorHandler = (error) => console.log("Error", error);
 
