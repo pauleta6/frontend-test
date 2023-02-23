@@ -5,7 +5,7 @@ const Chart = (props) => {
   return (
     <div className="cart-container">
       <img src={ShoppingCart} alt="" className="cart-icon"></img>
-      {props.number && <div className="cart-number">{props.number}</div>}
+      {!!props.number && <div className="cart-number">{props.number}</div>}
     </div>
   );
 };

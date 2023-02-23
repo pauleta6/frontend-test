@@ -1,7 +1,12 @@
+import { action, extendObservable } from "mobx";
 import { fetchProduct, fetchProducts, addProductToCart } from "../utils/api";
 
 class ProductsService {
-  nItemsInCart = 0;
+  constructor() {
+    extendObservable(this, {
+      nItemsInCart: 0,
+    });
+  }
 
   getAllProducts = async () => {
     return await fetchProducts();
@@ -13,8 +18,12 @@ class ProductsService {
 
   addProductToCart = async (productBody) => {
     const response = await addProductToCart(productBody);
-    if (!response.message) this.nItemsInCart = response.count;
+    if (!response.message) this.setNItemsInCart(response.count);
   };
+
+  setNItemsInCart = action((value) => {
+    this.nItemsInCart = value;
+  });
 }
 
 export default ProductsService;
