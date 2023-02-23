@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppContext } from "../../AppContext";
+import ProductActions from "./components/ProductActions";
 import ProductDescription from "./components/ProductDescription";
 
 import "./ProductDetail.css";
@@ -21,8 +22,9 @@ const ProductDetail = () => {
     product ? (
       <div className="product-detail-container">
         <img className="product-detail-image" src={product.imgUrl} alt=""></img>
-        <div className="product-detail-description">
+        <div className="product-detail-info">
           <ProductDescription product={product}></ProductDescription>
+          <ProductActions product={product}></ProductActions>
         </div>
       </div>
     ) : (

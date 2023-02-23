@@ -11,6 +11,8 @@
     aspect-ratio: 160/212;
 }
 
-.product-detail-description {
+.product-detail-info {
     display: flex;
+    flex-direction: column;
+    gap: 32px;
 }

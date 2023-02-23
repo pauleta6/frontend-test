@@ -1,0 +1,43 @@
+.product-actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.product-actions-selectors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.selector {
+    height: 32px;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.selector:focus {
+    outline: none !important;
+    border: 1px solid #95BDFF;
+}
+
+.submit-button {
+    height: 56px;
+    padding: 8px;
+    border: 0px;
+    background-color: #F7C8E0;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.submit-button:hover {
+    background-color: #f1bdd8;
+}
+
+.submit-button:active {
+    background-color: #eba5c9;
+}
