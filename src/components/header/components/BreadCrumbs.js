@@ -16,7 +16,7 @@ const BreadCrumbs = () => {
         <>
           <img src={arrowRight} className="arrow-right" alt=""></img>
           <Link to={route.pathname} style={{ color: "#95BDFF" }}>
-            {pathSplit[1]}
+            {`${pathSplit[1]} ${pathSplit[2].replaceAll("%", " ")}`}
           </Link>
         </>
       )}
