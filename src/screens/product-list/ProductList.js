@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../AppContext";
 
+import "./ProductList.css";
+
 const ProductList = () => {
   const { _productsService } = useAppContext();
   const [products, setProducts] = useState([]);
@@ -12,7 +14,11 @@ const ProductList = () => {
     getAllProducts();
   }, [_productsService]);
   return products.length ? (
-    products.map((product) => <div key={product.id}>{product.id}</div>)
+    <div className="product-list-container">
+      {products.map((product) => (
+        <div key={product.id}>{product.id}</div>
+      ))}
+    </div>
   ) : (
     <></> //TODO: add spinner
   );
