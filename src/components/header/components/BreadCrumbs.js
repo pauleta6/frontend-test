@@ -15,8 +15,14 @@ const BreadCrumbs = () => {
       {pathSplit.length > 1 && pathSplit[0] === "detail" && (
         <>
           <img src={arrowRight} className="arrow-right" alt=""></img>
-          <Link to={route.pathname} style={{ color: "#95BDFF" }}>
-            {`${pathSplit[1]} ${pathSplit[2].replaceAll("%", " ")}`}
+          <Link
+            to={route.pathname}
+            style={{ color: "#000", pointerEvents: "none" }}
+          >
+            {`${pathSplit[2].replaceAll("%", " ")} ${pathSplit[3].replaceAll(
+              "%",
+              " "
+            )}`}
           </Link>
         </>
       )}

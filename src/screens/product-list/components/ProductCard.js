@@ -7,7 +7,9 @@ const ProductCard = (props) => {
   return (
     <div
       className="product-card-container"
-      onClick={() => navigate(`/detail/${product.brand}/${product.model}`)}
+      onClick={() =>
+        navigate(`/detail/${product.id}/${product.brand}/${product.model}`)
+      }
     >
       <div className="product-card-image-container">
         <img src={product.imgUrl} className="product-card-image" alt=""></img>
