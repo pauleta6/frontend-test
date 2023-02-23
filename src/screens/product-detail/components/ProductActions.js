@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../../AppContext";
 import "./ProductActions.css";
 
 const ProductActions = (props) => {
   const navigate = useNavigate();
+  const { _productsService } = useAppContext();
   const [storageCode, setStorageCode] = useState(undefined);
   const [colorCode, setColorCode] = useState(undefined);
 
@@ -17,6 +19,11 @@ const ProductActions = (props) => {
   }, [colorsLength, product, storagesLength]);
 
   const onSubmit = () => {
+    _productsService.addProductToCart({
+      id: product.id,
+      colorCode,
+      storageCode,
+    });
     navigate("/");
   };
 
@@ -25,7 +32,9 @@ const ProductActions = (props) => {
       <div className="product-actions-container">
         <div className="product-actions-selectors">
           <select
-            onChange={(value) => setStorageCode(value)}
+            onChange={(event) => {
+              setStorageCode(event.target.value);
+            }}
             required
             defaultValue={storagesLength === 1 ? storageCode : ""}
             className="selector"
@@ -40,7 +49,7 @@ const ProductActions = (props) => {
             ))}
           </select>
           <select
-            onChange={(value) => setColorCode(value)}
+            onChange={(event) => setColorCode(event.target.value)}
             required
             defaultValue={colorsLength === 1 ? colorCode : ""}
             className="selector"
