@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+
+import Price from "../../../components/price/Price";
 import "./ProductCard.css";
 
 const ProductCard = (props) => {
@@ -17,9 +19,7 @@ const ProductCard = (props) => {
       <div className="product-card-info-container">
         <div className="product-card-name">{product.brand}</div>
         <div>{product.model}</div>
-        {product.price && (
-          <div className="product-card-price">{product.price}€</div>
-        )}
+        {product.price && <Price price={product.price}></Price>}
       </div>
     </div>
   );

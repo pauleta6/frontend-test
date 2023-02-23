@@ -1,0 +1,8 @@
+.product-price {
+    font-weight: bold;
+    color: #DFFFD8;
+    background-color: #95BDFF;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 8px;
+}

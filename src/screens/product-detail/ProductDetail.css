@@ -1,12 +1,13 @@
 .product-detail-container {
     display: flex;
     padding: 16px;
-    gap: 96px;
+    gap: 48px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .product-detail-image {
-    width: 200px;
+    width: 300px;
     aspect-ratio: 160/212;
 }
 
