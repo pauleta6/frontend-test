@@ -1,0 +1,15 @@
+.product-detail-container {
+    display: flex;
+    padding: 16px;
+    gap: 96px;
+    justify-content: center;
+}
+
+.product-detail-image {
+    width: 200px;
+    aspect-ratio: 160/212;
+}
+
+.product-detail-description {
+    display: flex;
+}
