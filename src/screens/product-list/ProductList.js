@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../AppContext";
+import ProductCard from "./components/ProductCard";
 
 import "./ProductList.css";
 
@@ -16,7 +17,7 @@ const ProductList = () => {
   return products.length ? (
     <div className="product-list-container">
       {products.map((product) => (
-        <div key={product.id}>{product.id}</div>
+        <ProductCard key={product.id} product={product}></ProductCard>
       ))}
     </div>
   ) : (
