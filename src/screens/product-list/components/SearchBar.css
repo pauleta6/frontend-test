@@ -1,0 +1,17 @@
+.search-bar {
+    display: flex;
+    max-width: 350px;
+    min-width: 250px;
+    width: 100%;
+    margin: 0px 0px 16px 0px;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #dcdcdc;
+    padding: 8px;
+    align-self: flex-end;
+}
+
+.search-bar:focus {
+    outline: none !important;
+    border: 2px solid #95BDFF;
+}
