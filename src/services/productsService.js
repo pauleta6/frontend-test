@@ -4,7 +4,9 @@ import { fetchProduct, fetchProducts, addProductToCart } from "../utils/api";
 class ProductsService {
   constructor() {
     extendObservable(this, {
-      nItemsInCart: localStorage.getItem("nItemsInCart"),
+      nItemsInCart: localStorage.getItem("nItemsInCart")
+        ? parseInt(localStorage.getItem("nItemsInCart"))
+        : 0,
       productList: undefined,
     });
   }
