@@ -64,8 +64,8 @@ class ProductsService {
   addProductToCart = async (productBody) => {
     const response = await addProductToCart(productBody);
     if (!response.message) {
-      this.setNItemsInCart(response.count);
-      localStorage.setItem("nItemsInCart", response.count);
+      this.setNItemsInCart(this.nItemsInCart + response.count);
+      localStorage.setItem("nItemsInCart", this.nItemsInCart);
     }
   };
 
