@@ -5,15 +5,60 @@ class ProductsService {
   constructor() {
     extendObservable(this, {
       nItemsInCart: 0,
+      productList: undefined,
     });
   }
 
-  getAllProducts = async () => {
-    return await fetchProducts();
+  getAllProducts = () => {
+    const products = JSON.parse(localStorage.getItem("products"));
+    if (
+      !!products &&
+      !!products.expiracy &&
+      new Date(products.expiracy) > Date.now()
+    ) {
+      this.setProductList(products.productList);
+    } else {
+      localStorage.removeItem("products");
+      fetchProducts().then((result) => {
+        this.setProductList(result);
+        localStorage.setItem(
+          "products",
+          JSON.stringify({
+            productList: result,
+            expiracy: Date.now() + 60 * 60 * 1000,
+          })
+        );
+      });
+    }
   };
 
-  getProduct = async (id) => {
-    return await fetchProduct(id);
+  getProduct = (id, callback) => {
+    const product = JSON.parse(localStorage.getItem(id));
+    if (
+      !!product &&
+      !!product.expiracy &&
+      new Date(product.expiracy) > Date.now()
+    ) {
+      callback(product.product);
+    } else {
+      localStorage.removeItem(id);
+      const setItems = async () => {
+        const result = await fetchProduct(id);
+        if (!result.message) {
+          localStorage.setItem(
+            id,
+            JSON.stringify({
+              product: result,
+              expiracy: Date.now() + 60 * 60 * 1000,
+            })
+          );
+          callback(result);
+        } else {
+          callback(null);
+        }
+      };
+      setItems();
+    }
   };
 
   addProductToCart = async (productBody) => {
@@ -23,6 +68,10 @@ class ProductsService {
 
   setNItemsInCart = action((value) => {
     this.nItemsInCart = value;
+  });
+
+  setProductList = action((value) => {
+    this.productList = value;
   });
 }
 

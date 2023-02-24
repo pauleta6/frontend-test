@@ -13,12 +13,9 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(undefined);
 
   useEffect(() => {
-    const getProduct = async () => {
-      const result = await _productsService.getProduct(id);
-      result.message ? setProduct(null) : setProduct(result);
-    };
-    getProduct();
+    _productsService.getProduct(id, setProduct);
   }, [_productsService, id]);
+
   return product !== undefined ? (
     product ? (
       <div className="product-detail-container">

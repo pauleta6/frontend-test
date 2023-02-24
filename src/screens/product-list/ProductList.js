@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { observer } from "mobx-react";
+
 import { useAppContext } from "../../AppContext";
 import Spinner from "../../components/spinner/Spinner";
 import ProductCard from "./components/ProductCard";
@@ -6,19 +8,20 @@ import SearchBar from "./components/SearchBar";
 
 import "./ProductList.css";
 
-const ProductList = () => {
+const ProductList = observer(() => {
   const { _productsService } = useAppContext();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    const getAllProducts = async () => {
-      const result = await _productsService.getAllProducts();
-      setProducts(result);
-      setFilteredProducts(result);
-    };
-    getAllProducts();
+    _productsService.getAllProducts();
   }, [_productsService]);
+
+  useEffect(() => {
+    setProducts(_productsService.productList);
+    setFilteredProducts(_productsService.productList);
+  }, [_productsService.productList]);
+
   return (
     <div className="product-list-screen">
       <SearchBar
@@ -32,7 +35,7 @@ const ProductList = () => {
           )
         }
       ></SearchBar>
-      {products.length ? (
+      {!!products ? (
         <div className="product-list-container">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product}></ProductCard>
@@ -45,6 +48,6 @@ const ProductList = () => {
       )}
     </div>
   );
-};
+});
 
 export default ProductList;
