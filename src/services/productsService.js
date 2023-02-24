@@ -4,7 +4,7 @@ import { fetchProduct, fetchProducts, addProductToCart } from "../utils/api";
 class ProductsService {
   constructor() {
     extendObservable(this, {
-      nItemsInCart: 0,
+      nItemsInCart: localStorage.getItem("nItemsInCart"),
       productList: undefined,
     });
   }
@@ -63,7 +63,10 @@ class ProductsService {
 
   addProductToCart = async (productBody) => {
     const response = await addProductToCart(productBody);
-    if (!response.message) this.setNItemsInCart(response.count);
+    if (!response.message) {
+      this.setNItemsInCart(response.count);
+      localStorage.setItem("nItemsInCart", response.count);
+    }
   };
 
   setNItemsInCart = action((value) => {
