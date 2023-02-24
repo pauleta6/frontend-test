@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../../AppContext";
+import Spinner from "../../components/spinner/Spinner";
 import ProductCard from "./components/ProductCard";
 import SearchBar from "./components/SearchBar";
 
@@ -31,17 +32,17 @@ const ProductList = () => {
           )
         }
       ></SearchBar>
-      {
-        products.length ? (
-          <div className="product-list-container">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product}></ProductCard>
-            ))}
-          </div>
-        ) : (
-          <></>
-        ) //TODO: add spinner
-      }
+      {products.length ? (
+        <div className="product-list-container">
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product}></ProductCard>
+          ))}
+        </div>
+      ) : (
+        <div className="spinner-container">
+          <Spinner></Spinner>
+        </div>
+      )}
     </div>
   );
 };

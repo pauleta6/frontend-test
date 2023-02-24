@@ -10,3 +10,8 @@
     gap: 64px;
     justify-content: space-between;
 }
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+}

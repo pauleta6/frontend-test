@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useAppContext } from "../../AppContext";
 import ProductActions from "./components/ProductActions";
 import ProductDescription from "./components/ProductDescription";
+import Spinner from "../../components/spinner/Spinner";
 
 import "./ProductDetail.css";
 
@@ -31,7 +32,9 @@ const ProductDetail = () => {
       <div>This product doesn't exist</div>
     )
   ) : (
-    <></> //TODO Add spinner
+    <div className="spinner-container">
+      <Spinner></Spinner>
+    </div>
   );
 };
 
