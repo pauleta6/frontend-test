@@ -6,7 +6,7 @@ const ProductDescription = (props) => {
   return (
     <div className="product-description-container">
       <div className="product-title">{`${product.brand} ${product.model}`}</div>
-      <Price price={product.price}></Price>
+      {product.price && <Price price={product.price}></Price>}
       <div>&#x2022; CPU: {product.cpu}</div>
       <div>&#x2022; RAM: {product.ram}</div>
       <div>&#x2022; OS: {product.os}</div>
